@@ -4,10 +4,9 @@
 >
 > Andrej Karpathy named the bad habits. This turns the fixes into skills your agent will actually *execute* — and whose results you can *verify*.
 
-<!-- TODO: uncomment once recorded — ./demo records assets/demo.gif via VHS. -->
-<!-- ![demo](assets/demo.gif) -->
+![agent-discipline demo: same agent and task — one ships a bug confidently, the other is forced to prove it](assets/demo.gif)
 
-**See it in 20 seconds** — a reproducible, honest demo (every ✅/❌ is a real test run):
+**Reproduce it in 20 seconds** — every ✅/❌ above is a real test run, nothing staged:
 `bash demo/run-demo.sh` · [what it shows →](demo/)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
