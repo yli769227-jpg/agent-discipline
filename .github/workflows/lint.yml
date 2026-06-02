@@ -1,0 +1,37 @@
+name: validate-skills
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Every SKILL.md has name + description frontmatter
+        run: |
+          set -e
+          fail=0
+          for f in skills/*/SKILL.md; do
+            echo "checking $f"
+            # must start with a YAML frontmatter block
+            if ! head -1 "$f" | grep -q '^---$'; then
+              echo "::error file=$f::missing opening frontmatter ---"; fail=1; continue
+            fi
+            fm="$(awk 'NR>1 && /^---$/{exit} NR>1{print}' "$f")"
+            echo "$fm" | grep -q '^name:' || { echo "::error file=$f::missing name:"; fail=1; }
+            echo "$fm" | grep -q '^description:' || { echo "::error file=$f::missing description:"; fail=1; }
+          done
+          exit $fail
+
+      - name: Every skill ships a verifiable done-criterion
+        run: |
+          set -e
+          fail=0
+          for f in skills/*/SKILL.md; do
+            grep -q '✅' "$f" || { echo "::error file=$f::no ✅ done-criterion found"; fail=1; }
+          done
+          exit $fail
