@@ -4,8 +4,11 @@
 >
 > Andrej Karpathy named the bad habits. This turns the fixes into skills your agent will actually *execute* — and whose results you can *verify*.
 
-<!-- TODO: drop a "before vs after" demo GIF here. First screen = the hook. -->
+<!-- TODO: uncomment once recorded — ./demo records assets/demo.gif via VHS. -->
 <!-- ![demo](assets/demo.gif) -->
+
+**See it in 20 seconds** — a reproducible, honest demo (every ✅/❌ is a real test run):
+`bash demo/run-demo.sh` · [what it shows →](demo/)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Skills](https://img.shields.io/badge/skills-8-blue)
