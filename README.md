@@ -58,14 +58,14 @@ cp -r skills/test-is-truth ~/.claude/skills/
 
 ## How it works / 原理
 
-Skills use **progressive disclosure**: the agent sees only each skill's name + description until a matching context appears, then loads the full instructions on demand. So you get the discipline *when it matters* without paying the context cost the rest of the time. Each `SKILL.md` is self-contained — read one to see the shape.
+Skills use **progressive disclosure**: the agent sees only each skill's name + description until a matching context appears, then loads the full instructions on demand. So you get the discipline *when it matters* without paying the context cost the rest of the time. Each `SKILL.md` is self-contained, and ships an `EXAMPLES.md` with real-world anti-patterns (generalized from actual agent mishaps) — read one to see the shape.
 
-> Skill 用**渐进式加载**:平时 agent 只看到每条 skill 的名字 + 描述,直到匹配场景出现才按需加载完整指令。于是你在**需要时**才拿到纪律约束,其余时间不付 context 成本。每个 `SKILL.md` 都自包含——读一条就懂结构。
+> Skill 用**渐进式加载**:平时 agent 只看到每条 skill 的名字 + 描述,直到匹配场景出现才按需加载完整指令。于是你在**需要时**才拿到纪律约束,其余时间不付 context 成本。每个 `SKILL.md` 自包含,并配一份 `EXAMPLES.md` 真实反例(从真实踩坑脱敏改写)——读一条就懂结构。
 
 ## Roadmap / 路线图
 
-- [ ] Demo GIF (before/after on a real bug)
-- [ ] Per-skill `EXAMPLES.md` with concrete good/bad cases
+- [x] Demo GIF (before/after on a real bug)
+- [x] Per-skill `EXAMPLES.md` with real-world anti-patterns
 - [ ] Vertical packs (data engineering, frontend, quant) on top of the core 8
 - [ ] One-command install for Cursor / Codex / Gemini CLI layouts
 
