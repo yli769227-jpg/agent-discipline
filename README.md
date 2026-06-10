@@ -11,7 +11,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Skills](https://img.shields.io/badge/skills-8-blue)
-![Works with](https://img.shields.io/badge/works%20with-Claude%20Code%20%7C%20Cursor%20%7C%20Codex%20%7C%20Gemini%20CLI-black)
+![Works with](https://img.shields.io/badge/installer-Claude%20Code%20(others%20planned)-black)
 
 ---
 
@@ -40,12 +40,12 @@ LLM coding agents are fast and confident — which is exactly the problem. They 
 
 ## Install / 安装
 
-Agent Skills are portable across tools that support them (Claude Code, Cursor, Codex, Gemini CLI, Windsurf, and more). Drop them into your skills directory:
+The skills themselves are plain Markdown and portable in principle to any agent that supports Agent Skills. **`install.sh` currently lays them out for Claude Code only** (`~/.claude/skills/`); one-command layouts for Cursor / Codex / Gemini CLI are on the roadmap. For other tools, copy the `skills/` directory into that tool's skills location manually.
 
 ```bash
 git clone https://github.com/yli769227-jpg/agent-discipline.git
 cd agent-discipline
-./install.sh          # copies the 8 skills into ~/.claude/skills/
+./install.sh          # copies the 8 skills into ~/.claude/skills/ (Claude Code layout)
 ```
 
 Or copy a single discipline you want:

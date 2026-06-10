@@ -9,7 +9,7 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Every SKILL.md has name + description frontmatter
         run: |
@@ -35,3 +35,26 @@ jobs:
             grep -q '✅' "$f" || { echo "::error file=$f::no ✅ done-criterion found"; fail=1; }
           done
           exit $fail
+
+  # test-is-truth applied to the repo itself: the demo invariants are asserted
+  # by running the REAL test (test.mjs) and checking its real exit code, not by
+  # trusting run-demo.sh narration. The buggy impl MUST fail; the fixed MUST pass.
+  demo-invariants:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+
+      - name: Buggy impl must FAIL (exit non-zero)
+        run: |
+          if node demo/test.mjs demo/src/parse-price.mjs; then
+            echo "::error::buggy parse-price unexpectedly PASSED — the test no longer catches the bug"
+            exit 1
+          fi
+          echo "OK: buggy impl failed as expected"
+
+      - name: Fixed impl must PASS (exit zero)
+        run: node demo/test.mjs demo/src/parse-price.fixed.mjs

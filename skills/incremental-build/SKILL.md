@@ -44,4 +44,5 @@ description: >-
 ## Done criterion (verifiable) / 完成判据（可验证）
 
 ✅ Each edited file was built/checked before the next one; for interface changes, every implementation found by grep was updated in one batch and the build is green.
+⚠️ A file was edited but the build/check couldn't run (no compiler, env not set up, etc.) — say so explicitly and treat it as unverified, don't move on as if it's green.
 ❌ Several files edited, no build yet — pause and verify before continuing.
