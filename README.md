@@ -1,6 +1,6 @@
 # agent-discipline
 
-> **8 battle-tested discipline skills that stop your AI coding agent from confidently shipping broken code — each with a verifiable done-criterion.**
+> **10 battle-tested discipline skills that stop your AI coding agent from confidently shipping broken code — each with a verifiable done-criterion.**
 >
 > Andrej Karpathy named the bad habits. This turns the fixes into skills your agent will actually *execute* — and whose results you can *verify*.
 
@@ -10,7 +10,7 @@
 `bash demo/run-demo.sh` · [what it shows →](demo/)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-![Skills](https://img.shields.io/badge/skills-8-blue)
+![Skills](https://img.shields.io/badge/skills-10-blue)
 ![Works with](https://img.shields.io/badge/installer-Claude%20Code%20(others%20planned)-black)
 
 ---
@@ -21,11 +21,11 @@ LLM coding agents are fast and confident — which is exactly the problem. They 
 
 > 大模型编码 agent 又快又自信——这恰恰是问题所在。它会凭记忆假设 API、不查调用方就删代码、没跑过就说"完成"、把刻意的设计推倒重来。它的失效模式不是"不会写代码",而是"自信地交付看起来对、其实错的代码"。
 
-`agent-discipline` is **8 composable guardrail skills**. Unlike a single fat `CLAUDE.md`, each loads only when its trigger fires (saving context), and each ends with a **verifiable done-criterion** — a concrete ✅/❌/⚠️ check, not vague advice.
+`agent-discipline` is **10 composable guardrail skills**. Unlike a single fat `CLAUDE.md`, each loads only when its trigger fires (saving context), and each ends with a **verifiable done-criterion** — a concrete ✅/❌/⚠️ check, not vague advice.
 
-> `agent-discipline` 是 **8 条可组合的护栏 skill**。和一坨常驻的 `CLAUDE.md` 不同,每条只在触发条件命中时加载(省 context),且每条都以一条**可验证的完成判据**收尾——一个具体的 ✅/❌/⚠️ 检查点,而不是模糊建议。
+> `agent-discipline` 是 **10 条可组合的护栏 skill**。和一坨常驻的 `CLAUDE.md` 不同,每条只在触发条件命中时加载(省 context),且每条都以一条**可验证的完成判据**收尾——一个具体的 ✅/❌/⚠️ 检查点,而不是模糊建议。
 
-## The 8 disciplines / 八条纪律
+## The 10 disciplines / 十条纪律
 
 | Skill | What it enforces | Verifiable check |
 |---|---|---|
@@ -37,6 +37,8 @@ LLM coding agents are fast and confident — which is exactly the problem. They 
 | [`no-dead-code`](skills/no-dead-code/SKILL.md) | Grep all callers before deleting any symbol. | Were references searched before deletion? |
 | [`first-principles`](skills/first-principles/SKILL.md) | Reason from facts and constraints, not "the usual way". | Is there a *why-this-time*, not just convention? |
 | [`agent-team`](skills/agent-team/SKILL.md) | Non-trivial work goes to sub-agents; a QA inspector with veto is mandatory. | Did QA review before "done"? |
+| [`restraint`](skills/restraint/SKILL.md) | No overproduction: no guards for impossible cases, no speculative flags, no premature abstraction, no trivial dependencies, no swallowed errors. | Does every new param/abstraction/dependency have a present-day caller? |
+| [`test-quality`](skills/test-quality/SKILL.md) | Tests themselves must be trustworthy: mock only at system boundaries, never mock state objects, test behavior not implementation. | Is every mock on a nameable system boundary? |
 
 ## Install / 安装
 
@@ -45,7 +47,7 @@ The skills themselves are plain Markdown and portable in principle to any agent 
 ```bash
 git clone https://github.com/yli769227-jpg/agent-discipline.git
 cd agent-discipline
-./install.sh          # copies the 8 skills into ~/.claude/skills/ (Claude Code layout)
+./install.sh          # copies the 10 skills into ~/.claude/skills/ (Claude Code layout)
 ```
 
 Or copy a single discipline you want:
@@ -54,7 +56,7 @@ Or copy a single discipline you want:
 cp -r skills/test-is-truth ~/.claude/skills/
 ```
 
-> 安装脚本把 8 条 skill 拷进 `~/.claude/skills/`。也可以只挑你想要的某一条拷过去。
+> 安装脚本把 10 条 skill 拷进 `~/.claude/skills/`。也可以只挑你想要的某一条拷过去。
 
 ## How it works / 原理
 
