@@ -1,5 +1,6 @@
 ---
 name: restraint
+version: 1.0.0
 description: >-
   Restraint (anti-overproduction). LLMs are systematically biased toward emitting MORE — more code,
   more parameters, more guards, more abstractions — than the spec requires. The cure is restraint,
@@ -46,6 +47,11 @@ description: >-
 ✅ Every new parameter, flag, abstraction, and dependency in the diff has a present-day caller you can point to; every catch handles a specific recoverable error; documented exceptions carry a revisit trigger.
 ⚠️ Something speculative survived with a written justification + revisit trigger — acceptable, revisit when it fires.
 ❌ The diff contains a guard/flag/abstraction/dependency with no current user, or a catch-all that swallows errors. Delete it before shipping.
+
+## Worked examples / 实战反例
+
+Real before/after cases for this discipline live in [EXAMPLES.md](./EXAMPLES.md) — read them before you act.
+本纪律的真实 before/after 反例见 [EXAMPLES.md](./EXAMPLES.md) —— 动手前先对照。
 
 ---
 

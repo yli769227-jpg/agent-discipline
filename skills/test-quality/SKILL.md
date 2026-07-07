@@ -1,5 +1,6 @@
 ---
 name: test-quality
+version: 1.0.0
 description: >-
   Test quality nine rules. test-is-truth demands that "done" is backed by a test verdict; this skill
   governs whether the tests themselves are worth trusting. Coding agents over-generate tests:
@@ -50,6 +51,11 @@ description: >-
 ✅ Every mock in the diff sits on a system boundary you can name; no test asserts internal call arguments; no two tests differ only by values; state objects are constructed real.
 ⚠️ Should-fix violations (bloat, naming, framework tests) noted and queued — acceptable for small changes.
 ❌ A must-fix violation ships: an internal mock, an implementation-detail assertion, or a mocked DTO. Fix before merge.
+
+## Worked examples / 实战反例
+
+Real before/after cases for this discipline live in [EXAMPLES.md](./EXAMPLES.md) — read them before you act.
+本纪律的真实 before/after 反例见 [EXAMPLES.md](./EXAMPLES.md) —— 动手前先对照。
 
 ---
 

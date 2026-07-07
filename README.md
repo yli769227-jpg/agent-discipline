@@ -94,9 +94,8 @@ Honest limits — this is not a magic wand:
 ## Roadmap / 路线图
 
 - [x] Demo GIF (before/after on a real bug)
-- [x] Per-skill `EXAMPLES.md` with real-world anti-patterns (core 8)
+- [x] Per-skill `EXAMPLES.md` with real-world anti-patterns (all 10)
 - [x] One-command install for Cursor / Codex / Gemini CLI — via [`npx skills add`](https://github.com/vercel-labs/skills)
-- [ ] `EXAMPLES.md` for `restraint` + `test-quality`
 - [ ] Vertical packs (data engineering, frontend, quant) on top of the core 10
 
 ## Contributing / 贡献
