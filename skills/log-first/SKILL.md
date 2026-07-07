@@ -1,11 +1,13 @@
 ---
 name: log-first
+version: 1.0.0
 description: >-
   Log first (observability). New code must include key-path logging: connection established, state
   change, error, request/response. Triggers when you're about to write a new module, interface,
   async task, or external call — or when debugging code that has no logs. Writing buggy code is
   normal; locating the bug is the hard part.
-  日志优先:新代码必须含关键路径日志(连接、状态变化、错误、请求/响应)。写代码犯错正常,定位问题才难。
+  日志优先:新代码必须含关键路径日志(连接、状态变化、错误、请求/响应)。触发:写新模块/接口/异步任务/外部调用,或 debug 无日志代码时。写代码犯错正常,定位问题才难。
+  不触发:纯改文案/配置、纯重命名、写测试断言,或模块已有完整关键路径日志。
 ---
 
 # Log First / 日志优先
@@ -22,7 +24,7 @@ description: >-
 3. Error logs must carry context: which operation, which arguments, which error.
    错误日志必须带上下文:什么操作、什么参数、什么错误。
 4. This applies to agent-written code too — a sub-task to write code must require key-path logging.
-   agent 写的代码同样适用——派写代码的子任务时要写明"加关键路径日志"。
+   agent 写的代码同样适用——派写代码的子任务时要写明"加关键路径日志"。(派子任务的完整必含项见 agent-team 的「派子任务必含清单」)
 
 ## When this triggers / 触发时机
 
@@ -32,6 +34,11 @@ description: >-
 
 ## Done criterion (verifiable) / 完成判据（可验证）
 
-✅ For the new code, you can point to a log line at each key path: connect, state change, error, request/response — each greppable by a module prefix and carrying context.
+✅ A grep over the new code (e.g. `grep -nE 'log\.(info|warn|error)' <file>`) shows a line at each key path — connect, state change, error, request/response — each module-prefixed and carrying context.
 ⚠️ Some paths logged, some missing — name the gaps.
 ❌ The new code is silent. If it fails in prod, you'll be blind. Add logs before shipping.
+
+## Worked examples / 实战反例
+
+Real before/after cases for this discipline live in [EXAMPLES.md](./EXAMPLES.md) — read them before you act.
+本纪律的真实 before/after 反例见 [EXAMPLES.md](./EXAMPLES.md) —— 动手前先对照。

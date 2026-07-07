@@ -1,11 +1,13 @@
 ---
 name: ask-before-act
+version: 1.0.0
 description: >-
   Ask before you act. Before changing architecture, behavior, or an interface contract, align on
   intent with the human first — don't make design decisions for them. The agent is a general
   contractor, not the architect. Triggers when you're about to start a non-trivial code change,
   refactor a core module, touch code marked `intentionally`, or alter a default behavior.
   先问再动手:架构/行为/接口契约变更前先与人对齐意图,不替对方做设计决策。AI 是 general contractor,不是 architect。
+  消歧:本 skill 管"要不要动"(授权门);方案怎么推导走 first-principles,改时不漏实现走 incremental-build,删旧符号走 no-dead-code。不触发:用户已 explicit 授权 / 纯只读·typo·import 修复 / 本回合已确认过设计意图。
 ---
 
 # Ask Before Act / 先问再动手
@@ -31,8 +33,22 @@ description: >-
 - Something *looks* like a bug, but a comment says it isn't.
 - The human gave you the *what* but not the *why*.
 
+## When NOT to ask / 不必再问
+
+- The human already gave an explicit, imperative go (`close #2`, `yes`, `merge`, "do it").
+  用户已给出明确的命令式授权(`close #2`、`yes`、`merge`、"就这么干")。
+- Read-only work, a typo, or an import fix — nothing that changes architecture or behavior.
+  纯只读、typo、import 修复——不改架构或行为的局部改动。
+- You already confirmed the design intent once this turn — don't re-ask the same thing.
+  本回合已确认过一次设计意图——别就同一件事反复追问。
+
 ## Done criterion (verifiable) / 完成判据（可验证）
 
 ✅ There was **one explicit confirmation** from the human on the design before the change landed.
 ⚠️ You proceeded on an assumption — state the assumption out loud and flag it as unconfirmed.
 ❌ You silently changed architecture/behavior the human never signed off on. Revert and ask.
+
+## Worked examples / 实战反例
+
+Real before/after cases for this discipline live in [EXAMPLES.md](./EXAMPLES.md) — read them before you act.
+本纪律的真实 before/after 反例见 [EXAMPLES.md](./EXAMPLES.md) —— 动手前先对照。

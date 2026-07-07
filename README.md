@@ -1,5 +1,7 @@
 # agent-discipline
 
+> ## "Trust me bro" is not a test result.
+>
 > **10 battle-tested discipline skills that stop your AI coding agent from confidently shipping broken code — each with a verifiable done-criterion.**
 >
 > Andrej Karpathy named the bad habits. This turns the fixes into skills your agent will actually *execute* — and whose results you can *verify*.
@@ -11,7 +13,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Skills](https://img.shields.io/badge/skills-10-blue)
-![Works with](https://img.shields.io/badge/installer-Claude%20Code%20(others%20planned)-black)
+![Works with](https://img.shields.io/badge/works%20with-70%2B%20agents%20via%20skills%20CLI-black)
 
 ---
 
@@ -42,12 +44,22 @@ LLM coding agents are fast and confident — which is exactly the problem. They 
 
 ## Install / 安装
 
-The skills themselves are plain Markdown and portable in principle to any agent that supports Agent Skills. **`install.sh` currently lays them out for Claude Code only** (`~/.claude/skills/`); one-command layouts for Cursor / Codex / Gemini CLI are on the roadmap. For other tools, copy the `skills/` directory into that tool's skills location manually.
+**One command, any agent** — via the [skills CLI](https://github.com/vercel-labs/skills) (Claude Code, Cursor, Codex, Copilot, Gemini CLI, and 70+ more):
+
+```bash
+npx skills add yli769227-jpg/agent-discipline
+```
+
+Pick specific disciplines or targets with `--skill` / `--agent`, or preview with `--list`.
+
+Or clone and use the bundled installer (Claude Code layout):
 
 ```bash
 git clone https://github.com/yli769227-jpg/agent-discipline.git
 cd agent-discipline
-./install.sh          # copies the 10 skills into ~/.claude/skills/ (Claude Code layout)
+./install.sh              # copy the 10 skills into ~/.claude/skills/ (global)
+./install.sh --project    # or into ./.claude/skills/ of the current repo (commit & share with the team)
+./install.sh --force      # overwrite skills you've already installed
 ```
 
 Or copy a single discipline you want:
@@ -56,7 +68,11 @@ Or copy a single discipline you want:
 cp -r skills/test-is-truth ~/.claude/skills/
 ```
 
-> 安装脚本把 10 条 skill 拷进 `~/.claude/skills/`。也可以只挑你想要的某一条拷过去。
+> **推荐一条命令装**:`npx skills add yli769227-jpg/agent-discipline`,通过 skills CLI 支持 Claude Code / Cursor / Codex / Copilot / Gemini CLI 等 70+ 工具,可用 `--skill` / `--agent` 挑条目和目标,`--list` 先预览。
+>
+> 也可 clone 后用仓库自带脚本(Claude Code 布局):默认拷进 `~/.claude/skills/`;加 `--project` 装进当前仓库的 `./.claude/skills/`(可随仓库提交、团队共享),加 `--force` 覆盖已装的。或者只挑某一条手动拷过去。
+>
+> **命名 / Naming:** skill 名即目录名(`test-is-truth`、`log-first` …),触发时用的就是这个名字。若你早期手动装过 `discipline-` 前缀的旧版,删掉旧的再重装以对齐。
 
 ## How it works / 原理
 
@@ -64,12 +80,24 @@ Skills use **progressive disclosure**: the agent sees only each skill's name + d
 
 > Skill 用**渐进式加载**:平时 agent 只看到每条 skill 的名字 + 描述,直到匹配场景出现才按需加载完整指令。于是你在**需要时**才拿到纪律约束,其余时间不付 context 成本。每个 `SKILL.md` 自包含,并配一份 `EXAMPLES.md` 真实反例(从真实踩坑脱敏改写)——读一条就懂结构。
 
+## When NOT to use this / 何时无效
+
+Honest limits — this is not a magic wand:
+
+- **Trivial fixes get slower, not safer.** A one-character typo or an import fix doesn't need `ask-before-act` + QA review. The disciplines target *non-trivial* changes; several skills carry explicit "when NOT to trigger" carve-outs for exactly this.
+- **The descriptions are always in context.** Progressive disclosure means full instructions load on demand, but the 10 names + descriptions do sit in your agent's context permanently (~1–2k tokens). If you only ever hit one failure mode, install just that skill.
+- **Discipline ≠ correctness.** These skills force the agent to *check* — they don't make the checks smart. A green test on a bad assertion still lies (that's why `test-quality` exists, but it can't catch everything either).
+- **No substitute for human review.** `ask-before-act` routes design decisions to you; if you rubber-stamp every prompt, the guardrail is theater.
+
+> 诚实边界——这不是魔法棒:单字符 typo / import 修复走流程只会更慢,纪律只针对非平凡变更(多条 skill 内置了"不触发"豁免);10 条 name+description 常驻 context(约 1–2k token),只踩一种坑就只装那一条;纪律强制 agent 去"检查",但不保证检查本身聪明——烂断言跑绿了照样骗人;`ask-before-act` 把设计决策交还给你,你若无脑放行,护栏就是演戏。
+
 ## Roadmap / 路线图
 
 - [x] Demo GIF (before/after on a real bug)
-- [x] Per-skill `EXAMPLES.md` with real-world anti-patterns
-- [ ] Vertical packs (data engineering, frontend, quant) on top of the core 8
-- [ ] One-command install for Cursor / Codex / Gemini CLI layouts
+- [x] Per-skill `EXAMPLES.md` with real-world anti-patterns (core 8)
+- [x] One-command install for Cursor / Codex / Gemini CLI — via [`npx skills add`](https://github.com/vercel-labs/skills)
+- [ ] `EXAMPLES.md` for `restraint` + `test-quality`
+- [ ] Vertical packs (data engineering, frontend, quant) on top of the core 10
 
 ## Contributing / 贡献
 

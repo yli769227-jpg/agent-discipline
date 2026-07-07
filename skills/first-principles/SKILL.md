@@ -1,11 +1,13 @@
 ---
 name: first-principles
+version: 1.0.0
 description: >-
   Reason from first principles. Build every conclusion from basic facts, challenge assumptions, and
   re-derive the approach from constraints — not from convention, "best practice", or industry defaults.
   Triggers when about to cite "the usual way" as a reason, copy a common template without saying why it
   fits this time, or make an architecture / topology / data-model choice. Reasoning over recall.
   第一性原理:从基本事实出发,挑战假设,从约束重推方案,不靠惯例/最佳实践/行业默认值。推理优先于回忆。
+  消歧:本 skill 管"方案怎么推导";要不要让用户拍板归 ask-before-act,二者常并用。
 ---
 
 # First Principles / 第一性原理
@@ -36,6 +38,11 @@ Reason from first principles — not "how it's usually done", but "why it must b
 
 ## Done criterion (verifiable) / 完成判据（可验证）
 
-✅ The chosen approach is justified by *this project's* facts and constraints — there's an explicit "why this time", not just "this is conventional".
+✅ The approach lists three things: (a) the default/convention you're stripping away, (b) the specific constraint or fact that overturns it, and (c) how the conclusion would change if that constraint changed. Missing any one = not done.
 ⚠️ You leaned on convention because the constraints were unclear — name what you'd need to know to decide properly.
 ❌ The only reason given is "it's standard". Re-derive from constraints before committing.
+
+## Worked examples / 实战反例
+
+Real before/after cases for this discipline live in [EXAMPLES.md](./EXAMPLES.md) — read them before you act.
+本纪律的真实 before/after 反例见 [EXAMPLES.md](./EXAMPLES.md) —— 动手前先对照。

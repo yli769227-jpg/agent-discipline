@@ -1,12 +1,13 @@
 ---
 name: agent-team
+version: 1.0.0
 description: >-
   Work as an agent team. Send non-trivial work to sub-agents; keep the main thread for planning,
   acceptance, smoke-testing, and communication. A QA inspector is mandatory and holds veto power — a
   FAIL must be fixed and re-reviewed. Triggers when about to do heavy multi-file edits in the main
   thread, take on a task spanning many files/modules, or say "I'll just do this myself". The prime
   goal is to keep the main context lean and avoid overflow.
-  Agent Team 协作:非平凡任务派子 agent,主线程只做规划/验收/冒烟测试/沟通。监理(QA)必选且有否决权。首要目标是精简主上下文。
+  Agent Team 协作:非平凡任务派子 agent,主线程只做规划/验收/冒烟测试/沟通。监理(QA)必选且有否决权。触发:将做 3+ 文件编辑/跨多模块任务,或想"我自己干完就好"时。首要目标是精简主上下文。
 ---
 
 # Work As An Agent Team / Agent Team 协作
@@ -21,11 +22,12 @@ description: >-
 2. The main thread does only: plan, accept, smoke-test, communicate.
    主线程只做:规划、验收、冒烟测试、沟通。
 
-## The three roles / 三驾马车
+## The core roles / 核心角色
 
 - **Engineer** — writes code, makes the thing run. / **工程师**:写代码,让项目跑起来。
 - **QA Inspector** — finds the cracks; verifies happy path, error path, and boundaries. / **监理**:找裂纹,验证正确/错误/边界路径。
 - **Lead (main thread)** — plans, coordinates, accepts. / **主线程**:规划、协调、验收。
+- Add specialist agents (Research, Security, …) as the task needs. / 可按需追加 Research、Security 等专职 agent。
 
 ## QA principle / 监理原则
 
@@ -40,8 +42,23 @@ description: >-
 - About to take on a task that reads 5+ files / generates large amounts of code.
 - About to declare a non-trivial task done (it must pass QA first).
 
+## Sub-task must-include checklist / 派子任务必含清单
+
+When the lead hands work to a sub-agent, the task description MUST spell out all four — this is the single source of truth the other disciplines point back to:
+主线程派子任务时,任务描述必须写明这四项——这是其余纪律在"派子任务"场景下的统一出口:
+
+1. **Verification step** — how to confirm it works (test-is-truth). / **验证步骤**——怎么确认跑通(test-is-truth)。
+2. **Key-path logging** — connect / state change / error / request-response (log-first). / **关键路径日志**——连接/状态变化/错误/请求响应(log-first)。
+3. **Build after each file edit** (incremental-build). / **每编一个文件就 build**(incremental-build)。
+4. **Re-read the latest file before editing** — don't trust a cached copy (no-dead-code). / **编辑前重读最新文件**——不信缓存副本(no-dead-code)。
+
 ## Done criterion (verifiable) / 完成判据（可验证）
 
 ✅ Non-trivial work ran through sub-agents, and a QA inspector reviewed it (happy + error + boundary paths) and returned PASS before "done" was claimed.
 ⚠️ QA returned PASS-with-caveats — surface the caveats.
 ❌ The lead thread did everything itself and/or skipped QA. Route it through the team and review.
+
+## Worked examples / 实战反例
+
+Real before/after cases for this discipline live in [EXAMPLES.md](./EXAMPLES.md) — read them before you act.
+本纪律的真实 before/after 反例见 [EXAMPLES.md](./EXAMPLES.md) —— 动手前先对照。

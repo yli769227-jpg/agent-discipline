@@ -1,5 +1,6 @@
 ---
 name: check-versions
+version: 1.0.0
 description: >-
   Check the forge temperature before you cast. When touching a language feature, runtime behavior, or
   framework/SDK API, verify the actual installed version first, then read that version's docs, then
@@ -35,6 +36,11 @@ description: >-
 
 ## Done criterion (verifiable) / 完成判据（可验证）
 
-✅ Before writing, you ran a version check (e.g. `node -v`, `pip show <pkg>`, `cargo tree`) and confirmed the API against *that* version's docs.
+✅ You pasted the actual version-check command and its output (e.g. `node -v` → `v18.20.4`) and cited the docs section/URL for *that* version — not just "I checked".
 ⚠️ You couldn't verify the version — say so, and mark the code as needing a version check.
 ❌ You wrote API-dependent code from memory with no version check. Stop and verify.
+
+## Worked examples / 实战反例
+
+Real before/after cases for this discipline live in [EXAMPLES.md](./EXAMPLES.md) — read them before you act.
+本纪律的真实 before/after 反例见 [EXAMPLES.md](./EXAMPLES.md) —— 动手前先对照。

@@ -1,5 +1,6 @@
 ---
 name: test-is-truth
+version: 1.0.0
 description: >-
   Tests are the truth. "Done" means a verifiable test result, not "the code is written". Triggers
   before you tell the human a task is complete, before saying "should work", before merging a PR or
@@ -22,7 +23,7 @@ description: >-
 3. A smoke test is the floor: run it end-to-end once and observe *actual* behavior, never imagined behavior.
    冒烟测试是底线:端到端真跑一次,观察**实际**行为,不靠想象。
 4. When you hand a task to another agent, the task description must spell out the verification step.
-   把任务派给别的 agent 时,任务描述必须写明验证步骤。
+   把任务派给别的 agent 时,任务描述必须写明验证步骤。(派子任务的完整必含项见 agent-team 的「派子任务必含清单」)
 5. Test what you changed, not what you didn't. Target the actual change point.
    测你改的,不是测你没改的,靶向实际变更点。
 
@@ -44,4 +45,10 @@ Every completion claim ends in this exact shape:
 ```
 
 ✅ The claim is backed by a real run with this three-part conclusion.
+⚠️ Only the happy path ran — error/boundary paths still untested. Put them in the ⚠️ line; not fully done.
 ❌ You said "done" with no executed test. Not done — run it.
+
+## Worked examples / 实战反例
+
+Real before/after cases for this discipline live in [EXAMPLES.md](./EXAMPLES.md) — read them before you act.
+本纪律的真实 before/after 反例见 [EXAMPLES.md](./EXAMPLES.md) —— 动手前先对照。
