@@ -52,6 +52,13 @@ npx skills add yli769227-jpg/agent-discipline
 
 Pick specific disciplines or targets with `--skill` / `--agent`, or preview with `--list`.
 
+**Claude Code native** — via the built-in plugin marketplace (auto-updates on `/plugin marketplace update`):
+
+```text
+/plugin marketplace add yli769227-jpg/agent-discipline
+/plugin install agent-discipline@agent-discipline
+```
+
 Or clone and use the bundled installer (Claude Code layout):
 
 ```bash
@@ -69,6 +76,8 @@ cp -r skills/test-is-truth ~/.claude/skills/
 ```
 
 > **推荐一条命令装**:`npx skills add yli769227-jpg/agent-discipline`,通过 skills CLI 支持 Claude Code / Cursor / Codex / Copilot / Gemini CLI 等 70+ 工具,可用 `--skill` / `--agent` 挑条目和目标,`--list` 先预览。
+>
+> **Claude Code 用户**也可走原生插件市场:`/plugin marketplace add yli769227-jpg/agent-discipline` 后 `/plugin install agent-discipline@agent-discipline`,以后 `/plugin marketplace update` 即可跟仓库自动更新。
 >
 > 也可 clone 后用仓库自带脚本(Claude Code 布局):默认拷进 `~/.claude/skills/`;加 `--project` 装进当前仓库的 `./.claude/skills/`(可随仓库提交、团队共享),加 `--force` 覆盖已装的。或者只挑某一条手动拷过去。
 >
@@ -96,6 +105,7 @@ Honest limits — this is not a magic wand:
 - [x] Demo GIF (before/after on a real bug)
 - [x] Per-skill `EXAMPLES.md` with real-world anti-patterns (all 10)
 - [x] One-command install for Cursor / Codex / Gemini CLI — via [`npx skills add`](https://github.com/vercel-labs/skills)
+- [x] Claude Code plugin marketplace support (`/plugin marketplace add yli769227-jpg/agent-discipline`)
 - [ ] Vertical packs (data engineering, frontend, quant) on top of the core 10
 
 ## Contributing / 贡献

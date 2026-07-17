@@ -1,0 +1,14 @@
+{
+  "name": "agent-discipline",
+  "displayName": "Agent Discipline",
+  "version": "1.0.0",
+  "description": "10 battle-tested discipline skills that stop your AI coding agent from confidently shipping broken code — each with a verifiable done-criterion.",
+  "author": {
+    "name": "yli769227-jpg",
+    "url": "https://github.com/yli769227-jpg"
+  },
+  "homepage": "https://github.com/yli769227-jpg/agent-discipline",
+  "repository": "https://github.com/yli769227-jpg/agent-discipline",
+  "license": "MIT",
+  "keywords": ["claude-code", "skills", "guardrails", "discipline", "tdd", "code-quality", "ai-agent"]
+}
