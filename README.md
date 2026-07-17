@@ -14,6 +14,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Skills](https://img.shields.io/badge/skills-10-blue)
 ![Works with](https://img.shields.io/badge/works%20with-70%2B%20agents%20via%20skills%20CLI-black)
+![Install](https://img.shields.io/badge/install-%2Fplugin%20marketplace-D97757)
 
 ---
 
