@@ -1,0 +1,99 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>agent-discipline — social preview 1280×640</title>
+<style>
+  :root{
+    --ink:#0B0B0C;
+    --bone:#F4F1EA;
+    --dim:#8C877E;
+    --accent:#D97757;   /* 与 README install badge 同色 */
+    --fail:#E5484D;
+    --pass:#3FB950;
+    --rule:rgba(244,241,234,.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1280px;height:640px;overflow:hidden}
+  body{
+    background:var(--ink);
+    color:var(--bone);
+    font-family:"Superclarendon","American Typewriter",Georgia,serif;
+    position:relative;
+  }
+
+  /* 质感层:扫描线 + 颗粒 + 暗角 */
+  .scan{position:absolute;inset:0;pointer-events:none;
+    background:repeating-linear-gradient(to bottom,rgba(255,255,255,.028) 0 1px,transparent 1px 3px);}
+  .vignette{position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(120% 90% at 22% 30%,rgba(217,119,87,.10),transparent 62%),
+               radial-gradient(58% 68% at 108% 114%,rgba(0,0,0,.62),transparent 64%);}
+  .edge{position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(244,241,234,.07)}
+
+  /* 左侧标尺:一条竖线 + 刻度,工业感 */
+  .ruler{position:absolute;left:56px;top:0;bottom:0;width:1px;background:var(--rule)}
+  .ruler::after{content:"";position:absolute;left:-4px;top:0;bottom:0;width:9px;
+    background:repeating-linear-gradient(to bottom,var(--rule) 0 1px,transparent 1px 32px)}
+
+  .stage{position:relative;height:100%;padding:56px 72px 52px 104px;display:flex;flex-direction:column}
+
+  .eyebrow{font-family:Menlo,"Courier New",monospace;font-size:17px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:14px}
+  .eyebrow b{color:var(--bone);font-weight:600}
+  .tag{border:1px solid var(--rule);color:var(--accent);padding:3px 9px 4px;font-size:14px;letter-spacing:.12em}
+
+  /* 主标题:引号悬挂在版心外 */
+  .head{margin-top:40px;position:relative}
+  .quotemark{position:absolute;left:-52px;top:-26px;font-size:150px;line-height:1;
+    color:var(--accent);opacity:.30}
+  .l1{font-size:82px;line-height:.98;letter-spacing:-.015em;color:var(--fail);position:relative;display:inline-block}
+  .l1::after{content:"";position:absolute;left:-6px;right:-6px;top:53%;height:5px;background:var(--fail);opacity:.85}
+  .l2{font-size:82px;line-height:1.04;letter-spacing:-.02em;margin-top:12px}
+
+  /* 判据行:测试输出的形状 */
+  .verdicts{margin-top:auto;font-family:Menlo,"Courier New",monospace;font-size:20px;line-height:1}
+  .row{display:flex;align-items:baseline;gap:18px;padding:15px 0;border-top:1px solid var(--rule)}
+  .mark{font-size:23px;width:22px;flex:none;font-family:Menlo,monospace}
+  .mark.no{color:var(--fail)} .mark.yes{color:var(--pass)}
+  .say{color:var(--bone)}
+  .who{margin-left:auto;color:var(--dim);font-size:16px;letter-spacing:.05em}
+
+  .foot{margin-top:30px;white-space:nowrap}
+  .foot .big{font-family:"Superclarendon","American Typewriter",serif;font-size:27px;color:var(--bone);letter-spacing:-.01em}
+  .foot .sub{margin-top:9px;font-family:Menlo,"Courier New",monospace;font-size:16px;
+    color:var(--dim);letter-spacing:.04em}
+  .foot .dot{color:var(--accent);padding:0 10px}
+</style>
+
+<div class="stage">
+  <div class="eyebrow">
+    <span><b>agent-discipline</b></span>
+    <span class="tag">v1.2.0</span>
+    <span>github.com/yli769227-jpg</span>
+  </div>
+
+  <div class="head">
+    <span class="quotemark">&ldquo;</span>
+    <div><span class="l1">Trust me bro</span></div>
+    <div class="l2">is not a test result.</div>
+  </div>
+
+  <div class="verdicts">
+    <div class="row">
+      <span class="mark no">&#10007;</span>
+      <span class="say">"done — should work now"</span>
+      <span class="who">what the agent claims</span>
+    </div>
+    <div class="row">
+      <span class="mark yes">&#10003;</span>
+      <span class="say">12 passed &nbsp;0 failed &nbsp;4.2s</span>
+      <span class="who">what discipline requires</span>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="big">10 guardrail skills, each ending in a verifiable done-criterion</div>
+    <div class="sub">Claude Code<span class="dot">&#9670;</span>Cursor<span class="dot">&#9670;</span>Codex<span class="dot">&#9670;</span>70+ agents via the skills CLI</div>
+  </div>
+</div>
+
+<div class="ruler"></div>
+<div class="scan"></div><div class="vignette"></div><div class="edge"></div>
