@@ -9,7 +9,7 @@
       "name": "agent-discipline",
       "source": "./",
       "description": "10 battle-tested discipline skills that stop your AI coding agent from confidently shipping broken code — each with a verifiable done-criterion.",
-      "version": "1.0.0",
+      "version": "1.2.0",
       "author": {
         "name": "yli769227-jpg"
       },
